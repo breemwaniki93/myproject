@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Profile</h2>
+        <div class="card" style="width: 18rem;">
+            {% if profile.image %}
+            <img src="{{ profile.image.url }}" class="card-img-top" alt="Profile Image">
+            {% else %}
+            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Profile Image">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ profile.first_name }} {{ profile.last_name }}</h5>
+                <p class="card-text">{{ profile.description }}</p>
+                <p class="card-text">{{ profile.email }}</p>
+            </div>
+        </div>
+        <a href="{% url 'logout' %}" class="btn btn-danger mt-3">Logout</a>
+    </div>
+</body>
+</html>
